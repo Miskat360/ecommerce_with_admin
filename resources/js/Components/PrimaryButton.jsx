@@ -1,15 +1,37 @@
-export default function PrimaryButton({ className = '', disabled, children, ...props }) {
+import { cn } from "@/utils/cn";
+import { RiLoader4Line } from "@remixicon/react";
+const PrimaryButton = ({
+    className = "",
+    iconDivClasses,
+    disabled,
+    children,
+    text,
+    ...props
+}) => {
     return (
-        <button
-            {...props}
-            className={
-                `inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150 ${
-                    disabled && 'opacity-25'
-                } ` + className
-            }
-            disabled={disabled}
-        >
-            {children}
-        </button>
+        <>
+            <button
+                {...props}
+                className={cn(
+                    className,
+                    `w-[200px] h-auto rounded-full border border-primary py-[2px] pr-[2px] pl-5 bg-white text-black font-bold capitalize inline-flex items-center justify-between`
+                )}
+                disabled={disabled}
+            >
+                {disabled && (
+                    <RiLoader4Line size={16} className="animate-spin mr-1" />
+                )}
+                {text}
+                <div
+                    className={cn(
+                        iconDivClasses,
+                        "bg-primary rounded-full p-3"
+                    )}
+                >
+                    {children}
+                </div>
+            </button>
+        </>
     );
-}
+};
+export default PrimaryButton;

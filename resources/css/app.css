@@ -1,3 +1,80 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+    font-family: popular-cafe;
+    src: url("../../public/fonts/PopularCafeNF.ttf");
+}
+@font-face {
+    font-family: negaroa;
+    src: url("../../public/fonts/Negaroa-Regular.ttf");
+}
+@font-face {
+    font-family: dongpora;
+    src: url("../../public/fonts/Dongpora-BF65c3a46d6cc22.otf");
+}
+@font-face {
+    font-family: syne;
+    src: url("../../public/fonts/8vIH7w4qzmVxm2BL9A.woff2");
+}
+@font-face {
+    font-family: pink-pencil;
+    src: url("../../public/fonts/PinkPencilDemo.ttf");
+}
+@font-face {
+    font-family: costarica;
+    src: url("../../public/fonts/costarica.otf");
+}
+@font-face {
+    font-family: norican;
+    src: url("../../public/fonts/MwQ2bhXp1eSBqjkPKJVbtQ.woff2");
+}
+@font-face {
+    font-family: gilroy;
+    src: url("../../public/fonts/Gilroy-Bold.woff2");
+}
+@layer components {
+    .bright {
+        @apply brightness-110 saturate-[1.2];
+    }
+}
+@layer utilities {
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+    .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+    .gradient-text {
+        background: linear-gradient(#ffb300, #ffd573);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+}
+img {
+    pointer-events: none;
+    user-select: none;
+}
+
+html.lenis,
+html.lenis body {
+    height: auto;
+}
+
+.lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+    overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+    pointer-events: none;
+}
