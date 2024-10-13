@@ -18,18 +18,18 @@ const DateTimeDisplay = ({
                     `${
                         isDanger &&
                         "!text-red-600 !font-bold !bg-[rgba(255,255,255,1)]"
-                    } bg-[rgba(255,255,255,0.08)] flex flex-col justify-center items-center size-10 sm:w-[5.3rem] sm:h-[5.5rem] rounded-xl`
+                    } bg-[rgba(255,255,255,0.08)] flex flex-col justify-center items-center size-[3.5rem] sm:w-[5.3rem] sm:h-[5.5rem] rounded sm:rounded-xl`
                 )}
             >
                 <span
                     className={cn(
                         numberClasses,
-                        `text-[2.2rem] leading-none font-medium`
+                        `text-[1.5rem] sm:text-[2.2rem] leading-none font-medium`
                     )}
                 >
                     {value}
                 </span>{" "}
-                <span className={textClasses}>{type}</span>
+                <span className={`${textClasses} max-sm:text-sm`}>{type}</span>
             </div>
         </>
     );
@@ -83,7 +83,7 @@ const ShowCounter = ({
 
 const ExpiredNotice = () => {
     return (
-        <div className="text-white text-3xl font-bold">
+        <div className="text-white max-sm:text-3xl font-bold">
             <span>Expired!!!</span>
         </div>
     );

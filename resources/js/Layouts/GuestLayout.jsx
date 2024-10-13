@@ -20,10 +20,10 @@ export default function Guest({ children }) {
 
     // requestAnimationFrame(raf);
     return (
-        <>
+        <div className="overflow-x-hidden">
             <Navbar />
             <main>{children}</main>
             <Footer />
-        </>
+        </div>
     );
 }

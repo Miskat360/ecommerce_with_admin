@@ -70,19 +70,19 @@ const ExclusiveDeals = () => {
                         <img
                             src="/images/exclusive-deals/burger.png"
                             alt=""
-                            className="bright w-[20rem] lg:w-auto lg:scale-110 -ml-[20%]"
+                            className="bright w-[40rem] lg:w-auto lg:scale-110 -ml-[20%]"
                         />
                         <img
                             src="/images/exclusive-deals/burger-text.png"
                             alt=""
-                            className="bright burger-text absolute -top-[15%] right-[8%] rotate-[60deg]"
+                            className="bright max-lg:w-[10rem] burger-text absolute -top-[15%] right-[8%] rotate-[60deg]"
                         />
                     </div>
-                    <div className="text-center">
-                        <div className="text-primary font-negaroa capitalize text-5xl font-bold">
+                    <div className="absolute max-md:left-[5%] right-[5%] md:right-[10%] z-10 text-center backdrop-blur-sm bg-[rgba(255,255,255,0.08)] py-7 md:p-4 rounded-md">
+                        <div className="lg:text-primary font-negaroa capitalize text-2xl md:text-5xl font-bold">
                             hot fresh
                         </div>
-                        <div className="text-4xl sm:text-[4.6rem] font-popularCafe sm:my-6 lg:my-10 uppercase">
+                        <div className="text-4xl sm:text-[4.6rem] font-popularCafe my-4 sm:my-6 lg:my-10 uppercase">
                             Free Large Fries
                         </div>
                         <div className="flex justify-center gap-6">

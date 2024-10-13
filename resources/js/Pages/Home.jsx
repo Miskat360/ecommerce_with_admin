@@ -11,6 +11,7 @@ import DownloadApp from "@/Components/Sections/DownloadApp";
 import ExclusiveDeals from "@/Components/Sections/ExclusiveDeals";
 import HomeCards from "@/Components/Sections/HomeCards";
 import CardSlider from "@/Components/Sections/CardSlider";
+import MenusCards from "@/Components/Sections/MenusCards";
 
 export default function Home() {
     return (
@@ -44,6 +45,9 @@ export default function Home() {
                 {/* Featured Card | Main Menu */}
                 <section>
                     <HomeFoodMenu />
+                </section>
+                <section>
+                    <MenusCards />
                 </section>
                 <section>
                     <CardSlider />

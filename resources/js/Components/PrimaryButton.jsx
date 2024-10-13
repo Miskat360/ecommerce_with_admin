@@ -1,5 +1,5 @@
 import { cn } from "@/utils/cn";
-import { RiLoader4Line } from "@remixicon/react";
+import { RiArrowRightUpLine, RiLoader4Line } from "@remixicon/react";
 const PrimaryButton = ({
     className = "",
     iconDivClasses,
@@ -19,16 +19,20 @@ const PrimaryButton = ({
                 disabled={disabled}
             >
                 {disabled && (
-                    <RiLoader4Line size={16} className="animate-spin mr-1" />
+                    <RiLoader4Line size={16} className="animate-spin" />
                 )}
                 {text}
                 <div
                     className={cn(
                         iconDivClasses,
-                        "bg-primary rounded-full p-3"
+                        "bg-primary rounded-full p-2"
                     )}
                 >
-                    {children}
+                    {children ? (
+                        children
+                    ) : (
+                        <RiArrowRightUpLine className="size-[20px]" />
+                    )}
                 </div>
             </button>
         </>
