@@ -9,6 +9,7 @@ export default {
         "./storage/framework/views/*.php",
         "./resources/views/**/*.blade.php",
         "./resources/js/**/*.jsx",
+        "./node_modules/react-tailwindcss-datepicker/dist/index.esm.{js,ts}",
     ],
 
     theme: {
@@ -36,13 +37,17 @@ export default {
                     // 900: "#171923",
                 },
                 tertiary: {
-                    DEFAULT: "#ff6d4d",
-                    50: "#ffeae6",
-                    100: "#fcdcd6",
-                    200: "#ffd3cc",
-                    300: "#E8D9D7",
-                    400: "#E4CDD0",
+                    DEFAULT: "#969BA0",
+                    50: "#7E7E7E",
                 },
+                // tertiary: {
+                //     DEFAULT: "#ff6d4d",
+                //     50: "#ffeae6",
+                //     100: "#fcdcd6",
+                //     200: "#ffd3cc",
+                //     300: "#E8D9D7",
+                //     400: "#E4CDD0",
+                // },
                 secondary: {
                     DEFAULT: "#2F4CDD",
                     50: "#E9EDFC",

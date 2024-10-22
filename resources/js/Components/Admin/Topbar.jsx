@@ -1,17 +1,50 @@
 import { Link, useForm, usePage } from "@inertiajs/react";
 import {
+    RiFlipVertical2Line,
     RiLogoutBoxRLine,
     RiNotification2Line,
     RiSearchLine,
+    RiStore2Line,
     RiUserLine,
 } from "@remixicon/react";
+import NotificationSidebar from "./NotificationSidebar";
+import { useState } from "react";
 
 const Topbar = ({}) => {
     const admin = usePage().props.admin.user;
-
+    const [isNotificationBarOpen, setIsNotificationBarOpen] = useState(false);
     const { post, processing } = useForm();
     const logoutHandler = () => {
         post(route("admin.logout"));
+    };
+    // Window Full Screen handle
+    const handleFullScreen = () => {
+        if (
+            document.fullscreenElement ||
+            document.webkitFullscreenElement ||
+            document.msFullscreenElement ||
+            document.mozFullscreenElement
+        ) {
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            } else if (document.webkitExitFullscreen) {
+                document.webkitExitFullscreen();
+            } else if (document.msExitFullscreen) {
+                document.msExitFullscreen();
+            } else if (document.mozExitFullscreen) {
+                document.mozExitFullscreen();
+            }
+        } else {
+            if (document.documentElement.requestFullscreen) {
+                document.documentElement.requestFullscreen();
+            } else if (document.documentElement.webkitRequestFullscreen) {
+                document.documentElement.webkitRequestFullscreen();
+            } else if (document.documentElement.msRequestFullscreen) {
+                document.documentElement.msRequestFullscreen();
+            } else if (document.documentElement.mozRequestFullscreen) {
+                document.documentElement.mozRequestFullscreen();
+            }
+        }
     };
     return (
         <>
@@ -43,14 +76,25 @@ const Topbar = ({}) => {
                     />
                 </form>
                 <div className="flex items-center gap-4 ml-auto">
-                    <div className="max-md:hidden size-10 flex items-center justify-center bg-secondary-50 text-secondary rounded-md">
-                        <RiNotification2Line />
-                    </div>
                     <div
-                        onClick={logoutHandler}
-                        className="xs:hidden size-10 flex items-center justify-center bg-secondary-50 text-secondary rounded-md"
+                        onClick={handleFullScreen}
+                        className="size-10 flex items-center justify-center bg-secondary-50 text-secondary rounded-md cursor-pointer"
                     >
-                        <RiLogoutBoxRLine />
+                        <RiFlipVertical2Line />
+                    </div>
+                    <Link
+                        href="/"
+                        className="size-10 flex items-center justify-center bg-secondary-50 text-secondary rounded-md"
+                    >
+                        <RiStore2Line />
+                    </Link>
+                    <div
+                        onClick={() =>
+                            setIsNotificationBarOpen((prev) => !prev)
+                        }
+                        className="max-md:hidden size-10 flex items-center justify-center bg-secondary-50 text-secondary rounded-md cursor-pointer"
+                    >
+                        <RiNotification2Line />
                     </div>
                     <details className="dropdown">
                         <summary className="flex items-center h-10 cursor-pointer select-none group">
@@ -89,6 +133,11 @@ const Topbar = ({}) => {
                     </details>
                 </div>
             </div>
+            {/* Notification Sidebar */}
+            <NotificationSidebar
+                isNotificationBarOpen={isNotificationBarOpen}
+                setIsNotificationBarOpen={setIsNotificationBarOpen}
+            />
         </>
     );
 };

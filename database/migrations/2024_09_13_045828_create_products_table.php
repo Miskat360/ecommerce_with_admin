@@ -16,13 +16,9 @@ return new class extends Migration
             $table->string('sku')->unique();
             $table->string('title')->nullable();
             $table->text('description')->nullable();
-            $table->decimal('price', 8, 2)->nullable();
-            $table->decimal('compare_price', 8, 2)->nullable();
-            $table->string('category'); //*need to rewrite category from chat gpt
-            $table->enum('status', ['active', 'draft', 'archived'])->default('active');
-            $table->json('image_urls')->nullable();
-            $table->json('collections')->nullable();
-            $table->json('tags')->nullable();
+            $table->decimal('price', 10, 2)->nullable();
+            $table->decimal('compare_price', 10, 2)->nullable();
+            $table->enum('status', ['active', 'draft', 'archived'])->default('draft');
             $table->softDeletes();
             $table->timestamps();
         });

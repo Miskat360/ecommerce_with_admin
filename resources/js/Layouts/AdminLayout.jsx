@@ -10,7 +10,7 @@ const AdminLayout = ({ children }) => {
 
                 <main className="flex">
                     <Sidebar />
-                    <section className="flex flex-col items-center flex-1 min-h-screen g-white px-6 pb-10 pt-28 max-md:pb-32 sm:px-10 bg-[#f1f1f1]">
+                    <section className="relative flex flex-col items-center flex-1 min-h-screen g-white px-6 pb-10 pt-24 max-md:pb-32 sm:px-6 bg-[#f1f1f1]">
                         <div className="w-full">{children}</div>
                     </section>
                 </main>

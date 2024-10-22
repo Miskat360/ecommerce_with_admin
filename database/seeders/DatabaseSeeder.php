@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
         Admin::factory()->create([
             'name' => 'Miskat Hasan',
             'email' => 'miskathasan979@gmail.com',
-            'password' => 'IamTheAdminOfFoodo',
+            'password' => 'i am the admin of foodo',
             'role' => 'admin',
         ]);
     }

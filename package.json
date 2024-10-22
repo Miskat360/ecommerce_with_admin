@@ -23,8 +23,12 @@
     "dependencies": {
         "@gsap/react": "^2.1.1",
         "@remixicon/react": "^4.2.0",
+        "apexcharts": "^3.54.1",
         "clsx": "^2.1.1",
         "lenis": "^1.1.13",
+        "react-apexcharts": "^1.4.1",
+        "react-tailwindcss-datepicker": "^1.7.2",
+        "recharts": "^2.13.0",
         "tailwind-merge": "^2.5.2"
     }
 }

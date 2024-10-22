@@ -44,4 +44,9 @@ class User extends Authenticatable implements MustVerifyEmail
             'password' => 'hashed',
         ];
     }
+
+    public function address()
+    {
+        return $this->belongsToMany(Address::class, 'user_addresses', 'user_id', 'address_id');
+    }
 }
