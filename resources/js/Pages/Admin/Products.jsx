@@ -1,3 +1,4 @@
+import PrimaryButton from "@/Components/PrimaryButton";
 import SecondaryButton from "@/Components/SecondaryButton";
 import AdminLayout from "@/Layouts/AdminLayout";
 import { Head, useForm } from "@inertiajs/react";
@@ -18,6 +19,14 @@ export default function Products() {
                     >
                         add product
                     </SecondaryButton>
+                    <PrimaryButton
+                        onClick={() => {
+                            get(route("admin.dashboard"));
+                        }}
+                        disabled={processing}
+                    >
+                        add product
+                    </PrimaryButton>
                 </div>
             </AdminLayout>
         </>

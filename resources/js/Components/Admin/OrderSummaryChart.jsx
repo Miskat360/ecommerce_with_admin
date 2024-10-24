@@ -39,9 +39,6 @@ const OrderSummaryChart = ({ seriesData }) => {
                 {
                     breakpoint: 700,
                     options: {
-                        chart: {
-                            width: 400,
-                        },
                         legend: {
                             position: "bottom",
                         },

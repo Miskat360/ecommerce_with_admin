@@ -82,7 +82,6 @@ const CustomerMapChart = ({ activeBtn, setActiveBtn }) => {
         },
     });
 
-    console.log(activeBtn);
     const [customerData, setCustomerData] = useState([
         {
             btnText: "Daily",
@@ -256,8 +255,8 @@ const CustomerMapChart = ({ activeBtn, setActiveBtn }) => {
     };
     return (
         <>
-            <div className="bg-white p-8 rounded-lg">
-                <div className="flex justify-between mb-6">
+            <div className="bg-white pt-6 md:p-8 rounded-lg">
+                <div className="block md:flex max-md:px-2 gap-4 justify-between mb-6">
                     <div>
                         <h1 className="text-xl font-bold text-black">
                             Customer Map
@@ -266,7 +265,7 @@ const CustomerMapChart = ({ activeBtn, setActiveBtn }) => {
                             Lorem ipsum dolor sit amet, consectetur
                         </p>
                     </div>
-                    <div className="bg-secondary-50 px-4 py-2 inline-flex gap-3 rounded">
+                    <div className="bg-secondary-50 px-4 py-2 max-md:mt-4 inline-flex gap-3 rounded">
                         {customerData.map(
                             ({ btnText, data, isBtnActive, xaxis }, index) => (
                                 <div

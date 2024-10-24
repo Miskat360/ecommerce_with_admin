@@ -24,6 +24,8 @@ Route::middleware(AdminAuthMiddleware::class)->prefix('admin')->group(function (
     Route::inertia('orders', 'Admin/Orders')->name('admin.orders');
     Route::inertia('products', 'Admin/Products')->name('admin.products');
     Route::inertia('products/add', 'Admin/AddProduct')->name('admin.add-product');
+    Route::inertia('products/categories', 'Admin/Categories')->name('admin.categories');
+    Route::inertia('products/categories/add', 'Admin/AddCategory')->name('admin.add-category');
     Route::inertia('customers', 'Admin/Customers')->name('admin.customers');
     Route::inertia('content', 'Admin/Content')->name('admin.content');
     Route::inertia('analytics', 'Admin/Analytics')->name('admin.analytics');

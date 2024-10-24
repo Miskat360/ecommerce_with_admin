@@ -54,7 +54,7 @@ const Dashboard = ({ admin }) => {
             <Head title="Dashboard" />
             <AdminLayout>
                 <div className="text-tertiary-50">
-                    <div className="flex justify-between">
+                    <div className="xs:flex justify-between">
                         <div>
                             <h1 className="text-3xl font-extrabold text-secondary">
                                 Dashboard
@@ -63,7 +63,7 @@ const Dashboard = ({ admin }) => {
                                 Welcome to Foodo Admin!
                             </p>
                         </div>
-                        <div className="bg-secondary-50 border border-secondary-100 px-3 py-2 flex items-center gap-3 rounded-lg group hover:bg-secondary transition-colors duration-300">
+                        <div className="bg-secondary-50 border border-secondary-100 px-3 py-2 max-xs:mt-4 inline-flex items-center gap-3 rounded-lg group hover:bg-secondary transition-colors duration-300">
                             <RiCalendarLine className="size-8 text-secondary group-hover:text-white transition-colors" />
                             <div>
                                 <h1 className="text-secondary group-hover:text-white">
@@ -80,7 +80,7 @@ const Dashboard = ({ admin }) => {
                             </div>
                         </div>
                     </div>
-                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 my-8">
+                    <div className="grid xs:grid-cols-2 lg:grid-cols-4 gap-8 my-8">
                         {[
                             { img: RiCupLine, value: 10, text: "menus" },
                             {
@@ -104,15 +104,15 @@ const Dashboard = ({ admin }) => {
                                     <div className="text-4xl font-extrabold text-black">
                                         {item.value}
                                     </div>
-                                    <h1 className="uppercase font-medium text-sm mt-2">
-                                        total <br /> {item.text}
+                                    <h1 className="uppercase font-medium text-sm mt-2 flex xs:flex-col max-xs:gap-1">
+                                        <span>total</span> {item.text}
                                     </h1>
                                 </div>
                             </div>
                         ))}
                     </div>
                     <div className="grid xl:grid-cols-2 gap-8">
-                        <div className="bg-white p-8 rounded-lg">
+                        <div className="bg-white px-3 pt-5 md:p-8 rounded-lg">
                             <h1 className="text-xl font-bold text-black">
                                 Orders Summary
                             </h1>
@@ -120,10 +120,10 @@ const Dashboard = ({ admin }) => {
                                 Lorem ipsum dolor sit amet, consectetur
                             </p>
                             <div className="flex items-center justify-between bg-[#e7faec] text-black px-4 py-3 rounded-lg my-5 cursor-pointer">
-                                <div className="bg-[#2BC155] px-6 py-2 rounded-md text-white text-xl">
+                                <div className="bg-[#2BC155] px-3 md:px-6 py-2 rounded-md text-white md:text-xl">
                                     25
                                 </div>
-                                <div className="flex items-center gap-2 text-lg font-medium">
+                                <div className="flex items-center gap-2 md:text-lg font-medium">
                                     New Orders{" "}
                                     <div className="size-4 bg-[#2BC155] rounded-full" />
                                 </div>
@@ -203,8 +203,8 @@ const Dashboard = ({ admin }) => {
                                 </div>
                             </div>
                         </div>
-                        <div className="bg-white pt-6 pb-14 px-8 rounded-lg">
-                            <div className="flex justify-between">
+                        <div className="bg-white pt-6 pb-14 md:px-8 rounded-lg">
+                            <div className="flex justify-between max-md:px-2">
                                 <div>
                                     <h1 className="text-xl text-black font-bold">
                                         Net Profit & Revenue
@@ -213,9 +213,11 @@ const Dashboard = ({ admin }) => {
                                         Lorem ipsum dolor sit amet, consectetur
                                     </p>
                                 </div>
-                                <div className="btn btn-primary">Monthly</div>
+                                <div className="btn btn-primary ml-2">
+                                    Monthly
+                                </div>
                             </div>
-                            <div className="flex items-center gap-8 justify-end my-8">
+                            <div className="flex items-center gap-8 justify-end my-8 max-md:pr-2">
                                 <div className="flex gap-3 items-end">
                                     <RiBarChartGroupedFill className="text-[#00E396] mb-1" />
                                     <div>
@@ -251,7 +253,7 @@ const Dashboard = ({ admin }) => {
                                 setActiveBtn={setActiveBtn}
                             />
                         </div>
-                        <div className="p-10 bg-white">top Customer</div>
+                        <div className="p-4 md:p-10 bg-white">top Customer</div>
                     </div>
                 </div>
             </AdminLayout>

@@ -5,9 +5,8 @@ const OrderSummary = ({ text, active, seriesData }) => {
     // console.log(active);
     return (
         <>
-            <div className={`${active ? "block" : "hidden"} xl:w-full w-3/5`}>
-                <div>{text}</div>
-                <div className="flex">
+            <div className={`${active ? "block" : "hidden"} max-w-[30em]`}>
+                <div className="flex mt-4">
                     <OrderSummaryChart seriesData={seriesData} />
                 </div>
             </div>

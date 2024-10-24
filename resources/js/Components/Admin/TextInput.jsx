@@ -2,7 +2,7 @@ import { cn } from "@/utils/cn";
 import { forwardRef, useEffect, useRef } from "react";
 
 export default forwardRef(function TextInput(
-    { type = "text", className = "", isFocused = false, ...props },
+    { type = "text", className = "", isFocused = false, onClick, ...props },
     ref
 ) {
     const input = ref ? ref : useRef();
@@ -15,6 +15,7 @@ export default forwardRef(function TextInput(
 
     return (
         <input
+            onClick={onClick}
             {...props}
             type={type}
             className={cn(

@@ -3,14 +3,14 @@ import {
     RiFlipVertical2Line,
     RiLogoutBoxRLine,
     RiNotification2Line,
-    RiSearchLine,
     RiStore2Line,
     RiUserLine,
 } from "@remixicon/react";
 import NotificationSidebar from "./NotificationSidebar";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const Topbar = ({}) => {
+    const searchRef = useRef(null);
     const admin = usePage().props.admin.user;
     const [isNotificationBarOpen, setIsNotificationBarOpen] = useState(false);
     const { post, processing } = useForm();
@@ -46,45 +46,68 @@ const Topbar = ({}) => {
             }
         }
     };
+    useEffect(() => {
+        const handleSearchFocus = (e) => {
+            if (e.ctrlKey && e.key === "k") {
+                e.preventDefault();
+                searchRef.current.focus();
+            }
+            if (e.key === "Escape") {
+                searchRef.current.blur();
+            }
+        };
+
+        document.addEventListener("keydown", handleSearchFocus);
+        return () => {
+            document.removeEventListener("keydown", handleSearchFocus);
+        };
+    }, []);
+
     return (
         <>
-            <div className="w-full fixed top-0 z-30 flex items-center px-6 py-3 bg-white shadow-sm">
-                <div className="flex items-center w-[60%">
+            <div className="w-full fixed top-0 z-30 flex items-center px-2 md:px-6 py-3 bg-white shadow-sm">
+                <div className="flex items-center mr-2">
                     <div className="flex items-center gap-4 font-popularCafe text-secondary text-4xl">
                         <div className="bg-secondary-50 p-1 rounded-md flex-none">
                             <img
-                                src="/images/logo3.png"
+                                src="/images/logo2.png"
                                 alt=""
                                 className="size-10"
                             />
                         </div>
-                        foodo
+                        <div className="max-md:hidden">foodo</div>
                     </div>
                 </div>
                 <form
                     action=""
                     method="get"
-                    className="mx-auto bg-secondary-50 hidden md:flex items-center px-3 rounded-md w-[40%]"
+                    className="mx-auto flex items-center sm:w-[40%] md:w-[35%] lg:w-[40%]"
                 >
-                    <RiSearchLine className="size-5 text-secondary" />
-                    <input
-                        type="text"
-                        name="search"
-                        id="search"
-                        placeholder="Search here..."
-                        className="bg-transparent border-none focus:ring-0"
-                    />
+                    <label className="relative w-full">
+                        <input
+                            ref={searchRef}
+                            name="search"
+                            id="search"
+                            type="text"
+                            placeholder="Search"
+                            className="border w-full border-zinc-400 hover:border-zinc-500 rounded-md pl-3 pr-14 focus:ring-2 focus:ring-[#2563EB] focus:ring-offset-2"
+                        />
+                        <div className="absolute right-0 inset-y-0 flex gap-2 items-center pr-3">
+                            <kbd className="kbd kbd-sm">⌘</kbd>
+                            <kbd className="kbd kbd-sm">K</kbd>
+                        </div>
+                    </label>
                 </form>
-                <div className="flex items-center gap-4 ml-auto">
+                <div className="flex items-center gap-2 lg:gap-4 ml-auto">
                     <div
                         onClick={handleFullScreen}
-                        className="size-10 flex items-center justify-center bg-secondary-50 text-secondary rounded-md cursor-pointer"
+                        className="size-10 md:flex hidden items-center justify-center bg-secondary-50 text-secondary rounded-md cursor-pointer"
                     >
                         <RiFlipVertical2Line />
                     </div>
                     <Link
                         href="/"
-                        className="size-10 flex items-center justify-center bg-secondary-50 text-secondary rounded-md"
+                        className="size-10 sm:flex hidden items-center justify-center bg-secondary-50 text-secondary rounded-md"
                     >
                         <RiStore2Line />
                     </Link>
@@ -98,13 +121,13 @@ const Topbar = ({}) => {
                     </div>
                     <details className="dropdown">
                         <summary className="flex items-center h-10 cursor-pointer select-none group">
-                            <div className="bg-secondary text-white px-6 h-full flex items-center rounded-l-md text-[17px] max-xs:hidden">
+                            <div className="bg-secondary text-white px-6 h-full flex items-center rounded-l-md text-[17px] max-lg:hidden">
                                 {admin.name
                                     ? "hi, " + admin.name.split(/\s+/)[0]
                                     : "hi, admin"}
                             </div>
-                            <div className="avatar placeholder -ml-4">
-                                <div className="bg-secondary-50 group-hover:bg-secondary-100 border-[3px] border-white text-secondary size-11 rounded-full">
+                            <div className="avatar placeholder lg:-ml-4">
+                                <div className="bg-secondary-50 group-hover:bg-secondary-100 border-[3px] border-white text-secondary size-11 rounded-lg lg:rounded-full">
                                     <RiUserLine className="" />
                                 </div>
                             </div>

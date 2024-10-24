@@ -2,13 +2,31 @@ import TextInput from "@/Components/Admin/TextInput";
 import InputError from "@/Components/InputError";
 import InputLabel from "@/Components/Admin/InputLabel";
 import AdminLayout from "@/Layouts/AdminLayout";
-import { Head, Link } from "@inertiajs/react";
+import { Head, Link, useForm } from "@inertiajs/react";
 import { RiArrowDropRightLine, RiArrowLeftLine } from "@remixicon/react";
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { cn } from "@/utils/cn";
 import TertiaryButton from "@/Components/TertiaryButton";
+import TextEditor from "@/Components/TextEditor";
+import SecondaryButton from "@/Components/SecondaryButton";
 
 const AddProduct = () => {
+    const { processing, get } = useForm();
+    const foodMenuConRef = useRef();
+    const foodMenuRef = useRef();
+    const [showMenuBox, setShowMenuBox] = useState(false);
+    const handleFoodMenu = () => {
+        setShowMenuBox((prev) => !prev);
+    };
+    useEffect(() => {
+        foodMenuRef.current = foodMenuConRef.current.children[0].children[1];
+    }, []);
+    document.addEventListener("mousedown", (e) => {
+        if (showMenuBox && !foodMenuConRef.current?.contains(e.target)) {
+            setShowMenuBox(false);
+        }
+    });
+
     return (
         <>
             <AdminLayout>
@@ -26,7 +44,7 @@ const AddProduct = () => {
                         </div>
                     </div>
                     <form
-                        onSubmit=""
+                        // onSubmit={}
                         className="flex flex-col [@media(min-width:850px)]:flex-row gap-4 mt-6"
                     >
                         <div className="md:basis-4/6 flex flex-col gap-4">
@@ -79,6 +97,9 @@ const AddProduct = () => {
                                     />
                                 </div>
                             </div>
+                            <div>
+                                <TextEditor />
+                            </div>
                         </div>
                         <div className="md:basis-2/6 flex flex-col gap-4">
                             <div className="bg-white border rounded-xl overflow-hidden p-4 flex flex-col">
@@ -97,12 +118,34 @@ const AddProduct = () => {
                                     <option value="Draft">Draft</option>
                                 </select>
                             </div>
-                            <div className="bg-white border rounded-xl overflow-hidden p-4 flex flex-col">
-                                <FormSectionInput
-                                    label={"Collections"}
-                                    name={"product_collections"}
-                                    className="!mt-0"
-                                />
+                            <div className="bg-white border rounded-xl overflow- p-4 flex flex-col">
+                                <div ref={foodMenuConRef} className="relative">
+                                    <FormSectionInput
+                                        label={"Collections"}
+                                        name={"product_collections"}
+                                        className="!mt-0"
+                                        onClick={handleFoodMenu}
+                                        showMenuBox={showMenuBox}
+                                        id="foodMenu"
+                                    />
+                                    <div
+                                        className={`${
+                                            showMenuBox ? "block" : "hidden"
+                                        } absolute bg-white shadow-lg rounded-lg p-4 border`}
+                                    >
+                                        <p>Lorem, ipsum dolor.</p>
+                                        <SecondaryButton
+                                            onClick={() => {
+                                                get(
+                                                    route("admin.add-category")
+                                                );
+                                            }}
+                                            disabled={processing}
+                                        >
+                                            Add Category
+                                        </SecondaryButton>
+                                    </div>
+                                </div>
                                 <FormSectionInput
                                     label={"Tags"}
                                     name={"product_tags"}
@@ -128,6 +171,7 @@ const FormSectionInput = ({
     name,
     isFocused = false,
     message,
+    onClick,
 }) => {
     return (
         <>
@@ -136,10 +180,10 @@ const FormSectionInput = ({
                 <TextInput
                     type={type}
                     name={name}
-                    id=""
                     placeholder={placeholder}
                     className={inputClasses}
                     isFocused={isFocused}
+                    onClick={onClick}
                 />
                 <InputError message={message} className="mt-2" />
             </div>
