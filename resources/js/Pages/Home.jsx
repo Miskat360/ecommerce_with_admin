@@ -42,16 +42,16 @@ export default function Home() {
                 <section>
                     <TextSlider />
                 </section>
+                <section className="pb-14">
+                    <CardSlider />
+                </section>
                 {/* Featured Card | Main Menu */}
                 <section>
                     <HomeFoodMenu />
                 </section>
-                <section>
+                {/* <section>
                     <MenusCards />
-                </section>
-                <section>
-                    <CardSlider />
-                </section>
+                </section> */}
                 <section>
                     <HomeCards />
                 </section>

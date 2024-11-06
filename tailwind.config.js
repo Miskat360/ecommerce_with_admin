@@ -1,3 +1,4 @@
+const { nextui } = require("@nextui-org/theme");
 import defaultTheme from "tailwindcss/defaultTheme";
 import forms from "@tailwindcss/forms";
 import daisyui from "daisyui";
@@ -10,6 +11,7 @@ export default {
         "./resources/views/**/*.blade.php",
         "./resources/js/**/*.jsx",
         "./node_modules/react-tailwindcss-datepicker/dist/index.esm.{js,ts}",
+        "./node_modules/@nextui-org/theme/dist/components/(date-picker|button|ripple|spinner|calendar|date-input|popover).js",
     ],
 
     theme: {
@@ -105,8 +107,7 @@ export default {
             },
         },
     },
-
-    plugins: [forms, daisyui],
+    plugins: [forms, daisyui, nextui()],
     daisyui: {
         themes: ["light"],
     },

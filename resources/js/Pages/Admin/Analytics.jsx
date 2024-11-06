@@ -1,16 +1,28 @@
+import CountdownTimer from "@/Components/CountdownTimer";
 import AdminLayout from "@/Layouts/AdminLayout";
 import { Head } from "@inertiajs/react";
 
 export default function Analytics() {
+    const DAYS_IN_MS = 30 * 24 * 60 * 60 * 1000;
+    const NOW_IN_MS = new Date().getTime();
+
+    const dateTime = NOW_IN_MS + DAYS_IN_MS;
     return (
         <>
             <Head title="Analytics" />
             <AdminLayout>
                 <div className="py-12">
                     <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                        <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                            <div className="p-6 text-gray-900 font-negaroa">
-                                Analytics
+                        <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6">
+                            <h1 className="text-center text-2xl">
+                                We are still working on our website. Stay tuned
+                                for updates!
+                            </h1>
+                            <div className="mt-8">
+                                <CountdownTimer
+                                    targetDate={dateTime}
+                                    className={"border"}
+                                />
                             </div>
                         </div>
                     </div>

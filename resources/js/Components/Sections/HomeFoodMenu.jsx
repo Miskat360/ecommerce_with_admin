@@ -45,7 +45,7 @@ const HomeFoodMenu = () => {
         // });
     });
     return (
-        <section className="w-full min-h-screen bg-patternBg bg-center relative py-16 mb-28">
+        <section className="w-full min-h-screen bg-patternBg bg-center relative py-16 -mb-4">
             <img
                 src="/images/home-menu/white-burger.png"
                 alt=""

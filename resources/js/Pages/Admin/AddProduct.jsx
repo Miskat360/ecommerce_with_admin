@@ -9,6 +9,7 @@ import { cn } from "@/utils/cn";
 import TertiaryButton from "@/Components/TertiaryButton";
 import TextEditor from "@/Components/TextEditor";
 import SecondaryButton from "@/Components/SecondaryButton";
+import FileUploadDropzone from "@/Components/ui/FileUploadDropzone";
 
 const AddProduct = () => {
     const { processing, get } = useForm();
@@ -67,14 +68,18 @@ const AddProduct = () => {
                                     ></textarea>
                                     <InputError message={""} className="mt-2" />
                                 </div>
-                                <FormSectionInput
+                                {/* <FormSectionInput
                                     label={"Media"}
                                     type="file"
                                     name={"product_image"}
                                     inputClasses={
                                         "border-dashed h-[5rem] cursor-pointer"
                                     }
-                                />
+                                /> */}
+                                <div className="mt-4">
+                                    <InputLabel value={"Image"} />
+                                    <FileUploadDropzone />
+                                </div>
                                 <FormSectionInput
                                     label={"Category"}
                                     name={"product_category"}

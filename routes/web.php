@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Middleware\Admin\AdminAuthMiddleware;
 use Illuminate\Auth\Middleware\Authenticate;
@@ -26,13 +27,14 @@ Route::middleware(AdminAuthMiddleware::class)->prefix('admin')->group(function (
     Route::inertia('products/add', 'Admin/AddProduct')->name('admin.add-product');
     Route::inertia('products/categories', 'Admin/Categories')->name('admin.categories');
     Route::inertia('products/categories/add', 'Admin/AddCategory')->name('admin.add-category');
+    Route::post('products/categories/add', [CategoryController::class, 'store'])->name('admin.add-category');
     Route::inertia('customers', 'Admin/Customers')->name('admin.customers');
     Route::inertia('content', 'Admin/Content')->name('admin.content');
     Route::inertia('analytics', 'Admin/Analytics')->name('admin.analytics');
     Route::inertia('discounts', 'Admin/Discounts')->name('admin.discounts');
     Route::inertia('settings', 'Admin/Settings')->name('admin.settings');
 });
-
+//* user profile
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

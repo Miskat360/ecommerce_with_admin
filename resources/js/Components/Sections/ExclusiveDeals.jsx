@@ -85,7 +85,7 @@ const ExclusiveDeals = () => {
                         <div className="text-4xl sm:text-[4.6rem] font-popularCafe my-4 sm:my-6 lg:my-10 uppercase">
                             Free Large Fries
                         </div>
-                        <div className="flex justify-center gap-6">
+                        <div>
                             <CountdownTimer targetDate={dateTime} />
                         </div>
                         <div className="mt-8">

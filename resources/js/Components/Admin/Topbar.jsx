@@ -8,6 +8,7 @@ import {
 } from "@remixicon/react";
 import NotificationSidebar from "./NotificationSidebar";
 import { useEffect, useRef, useState } from "react";
+import { BellIcon } from "../ui/BellIcon";
 
 const Topbar = ({}) => {
     const searchRef = useRef(null);
@@ -117,7 +118,8 @@ const Topbar = ({}) => {
                         }
                         className="max-md:hidden size-10 flex items-center justify-center bg-secondary-50 text-secondary rounded-md cursor-pointer"
                     >
-                        <RiNotification2Line />
+                        {/* <RiNotification2Line /> */}
+                        <BellIcon />
                     </div>
                     <details className="dropdown">
                         <summary className="flex items-center h-10 cursor-pointer select-none group">

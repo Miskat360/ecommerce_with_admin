@@ -101,15 +101,17 @@ const CountdownTimer = ({
         return <ExpiredNotice />;
     } else {
         return (
-            <ShowCounter
-                days={days}
-                hours={hours}
-                minutes={minutes}
-                seconds={seconds}
-                className={className}
-                numberClasses={numberClasses}
-                textClasses={textClasses}
-            />
+            <div className="flex justify-center gap-6">
+                <ShowCounter
+                    days={days}
+                    hours={hours}
+                    minutes={minutes}
+                    seconds={seconds}
+                    className={className}
+                    numberClasses={numberClasses}
+                    textClasses={textClasses}
+                />
+            </div>
         );
     }
 };

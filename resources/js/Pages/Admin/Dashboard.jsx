@@ -3,6 +3,8 @@ import OrderSummary from "@/Components/Admin/OrderSummary";
 import RevenueAreaChart from "@/Components/Admin/RevenueAreaChart";
 import AdminLayout from "@/Layouts/AdminLayout";
 import { Head, Link, router, useForm, usePage } from "@inertiajs/react";
+import { DateRangePicker } from "@nextui-org/date-picker";
+import { parseDate } from "@internationalized/date";
 import {
     RiArrowRightSLine,
     RiBarChartGroupedFill,
@@ -13,7 +15,6 @@ import {
     RiMoneyDollarCircleLine,
 } from "@remixicon/react";
 import { useState } from "react";
-import Datepicker from "react-tailwindcss-datepicker";
 
 const Dashboard = ({ admin }) => {
     // const { post, processing } = useForm();
@@ -23,10 +24,22 @@ const Dashboard = ({ admin }) => {
         btn2: true,
         btn3: false,
     });
-    const [value, setValue] = useState({
-        startDate: new Date(),
-        endDate: new Date(),
+    const today = new Date();
+    const oneMonthAgo = new Date(
+        today.getFullYear(),
+        today.getMonth(),
+        today.getDate() - 2
+    );
+    const [datePicker, setDatePicker] = useState({
+        startDate: oneMonthAgo.toISOString().split("T")[0],
+        endDate: today.toISOString().split("T")[0],
     });
+    const datePickerHandler = () => {
+        // setDatePicker({
+        //     startDate: datePicker.startDate,
+        //     endDate: datePicker.endDate,
+        // });
+    };
     const [isTabActive, setIsTabActive] = useState({
         tab1: true,
         tab2: false,
@@ -63,21 +76,16 @@ const Dashboard = ({ admin }) => {
                                 Welcome to Foodo Admin!
                             </p>
                         </div>
-                        <div className="bg-secondary-50 border border-secondary-100 px-3 py-2 max-xs:mt-4 inline-flex items-center gap-3 rounded-lg group hover:bg-secondary transition-colors duration-300">
-                            <RiCalendarLine className="size-8 text-secondary group-hover:text-white transition-colors" />
-                            <div>
-                                <h1 className="text-secondary group-hover:text-white">
-                                    Filter Period
-                                </h1>
-                                <Datepicker
-                                    value={value}
-                                    onChange={(newValue) => setValue(newValue)}
-                                    showShortcuts={true}
-                                    displayFormat="DD/MM/YYYY"
-                                    inputClassName="bg-transparent border-none text-sm p-0 min-w-[200px] cursor-pointer text-secondary group-hover:text-white"
-                                    toggleClassName="hidden"
-                                />
-                            </div>
+                        <div>
+                            <DateRangePicker
+                                label="Filter Period"
+                                onChange={(e) => datePickerHandler}
+                                defaultValue={{
+                                    start: parseDate(datePicker.startDate),
+                                    end: parseDate(datePicker.endDate),
+                                }}
+                                className="max-w-xs border rounded-xl"
+                            />
                         </div>
                     </div>
                     <div className="grid xs:grid-cols-2 lg:grid-cols-4 gap-8 my-8">
@@ -213,7 +221,7 @@ const Dashboard = ({ admin }) => {
                                         Lorem ipsum dolor sit amet, consectetur
                                     </p>
                                 </div>
-                                <div className="btn btn-primary ml-2">
+                                <div className="btn bg-secondary text-white ml-2">
                                     Monthly
                                 </div>
                             </div>

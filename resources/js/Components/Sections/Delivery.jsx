@@ -9,18 +9,6 @@ const Delivery = () => {
     gsap.registerPlugin(useGSAP);
     gsap.registerPlugin(ScrollTrigger);
     useGSAP(() => {
-        gsap.to(".deliveryMan2", {
-            x: 0,
-            duration: 1,
-            ease: "linear",
-            scrollTrigger: {
-                trigger: ".deliveryContainer",
-                markers: false,
-                start: "20% 100%",
-                end: "80% 30%",
-                scrub: 1,
-            },
-        });
         gsap.to(".deliveryMan1", {
             x: 0,
             duration: 1,
@@ -30,6 +18,18 @@ const Delivery = () => {
                 markers: false,
                 start: "top 80%",
                 end: "top 50%",
+                scrub: 1,
+            },
+        });
+        gsap.to(".deliveryMan2", {
+            x: 50,
+            duration: 1,
+            ease: "linear",
+            scrollTrigger: {
+                trigger: ".deliveryContainer",
+                markers: false,
+                start: "20% 100%",
+                end: "80% 30%",
                 scrub: 1,
             },
         });
@@ -72,7 +72,7 @@ const Delivery = () => {
                     <img
                         src="/images/home-delivery/delivery-man-2.png"
                         alt=""
-                        className="deliveryMan2 absolute bottom-28 right-[20%] translate-x-full z-10"
+                        className="deliveryMan2 absolute bottom-[2rem] sm:bottom-28 right-[20%] translate-x-full z-10"
                     />
                     <img
                         src="/images/home-delivery/design.png"

@@ -12,6 +12,7 @@ const Sidebar = () => {
                     {sidebarLinks.map((item, index) => {
                         return (
                             <SidenavLink
+                                key={index}
                                 onClick={() => {
                                     get(route(item.route));
                                 }}
