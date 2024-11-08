@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Middleware\Admin\AdminAuthMiddleware;
 use Illuminate\Auth\Middleware\Authenticate;
@@ -23,8 +24,7 @@ Route::get('/dashboard', function () {
 Route::middleware(AdminAuthMiddleware::class)->prefix('admin')->group(function () {
     Route::inertia('dashboard', 'Admin/Dashboard')->name('admin.dashboard');
     Route::inertia('orders', 'Admin/Orders')->name('admin.orders');
-    Route::inertia('products', 'Admin/Products')->name('admin.products');
-    Route::inertia('products/add', 'Admin/AddProduct')->name('admin.add-product');
+    Route::resource('products', ProductController::class);
     Route::inertia('products/categories', 'Admin/Categories')->name('admin.categories');
     Route::inertia('products/categories/add', 'Admin/AddCategory')->name('admin.add-category');
     Route::post('products/categories/add', [CategoryController::class, 'store'])->name('admin.add-category');

@@ -10,8 +10,22 @@ import TertiaryButton from "@/Components/TertiaryButton";
 import TextEditor from "@/Components/TextEditor";
 import SecondaryButton from "@/Components/SecondaryButton";
 import FileUploadDropzone from "@/Components/ui/FileUploadDropzone";
+import { MultiSelect } from "@/Components/ui/MultiSelect";
+import { TagsInput } from "@/Components/ui/TagsInput";
 
 const AddProduct = () => {
+    const [tags, setTags] = useState([]);
+    const frameworksList = [
+        { value: "react", label: "React" },
+        { value: "nextjs", label: "Nextjs" },
+        { value: "vue", label: "Vue" },
+        { value: "svelte", label: "Svelte" },
+        { value: "asdf", label: "asdf" },
+    ];
+    const [selectedFrameworks, setSelectedFrameworks] = useState([
+        "nextjs",
+        "svelte",
+    ]);
     const { processing, get } = useForm();
     const foodMenuConRef = useRef();
     const foodMenuRef = useRef();
@@ -35,7 +49,7 @@ const AddProduct = () => {
                 <section className="w-full">
                     <div className="flex items-center gap-2">
                         <Link
-                            href={route("admin.products")}
+                            href={route("products.index")}
                             className="hover:bg-gray-300 p-1 rounded-md"
                         >
                             <RiArrowLeftLine className="size-5" />
@@ -124,7 +138,20 @@ const AddProduct = () => {
                                 </select>
                             </div>
                             <div className="bg-white border rounded-xl overflow- p-4 flex flex-col">
-                                <div ref={foodMenuConRef} className="relative">
+                                <div>
+                                    <InputLabel value={"Category"} />
+                                    <MultiSelect
+                                        options={frameworksList}
+                                        onValueChange={setSelectedFrameworks}
+                                        defaultValue={selectedFrameworks}
+                                        placeholder="Select categories"
+                                        maxCount={5}
+                                    />
+                                </div>
+                                <div
+                                    ref={foodMenuConRef}
+                                    className="relative hidden"
+                                >
                                     <FormSectionInput
                                         label={"Collections"}
                                         name={"product_collections"}
@@ -151,10 +178,21 @@ const AddProduct = () => {
                                         </SecondaryButton>
                                     </div>
                                 </div>
-                                <FormSectionInput
+                                {/* <FormSectionInput
                                     label={"Tags"}
                                     name={"product_tags"}
-                                />
+                                /> */}
+                                <div className="mt-4">
+                                    <InputLabel
+                                        name="product_tags"
+                                        value={"Tags"}
+                                    />
+                                    <TagsInput
+                                        tags={tags}
+                                        setTags={setTags}
+                                        editTag={false}
+                                    />
+                                </div>
                             </div>
                             <div className="mt-auto ml-auto">
                                 <TertiaryButton buttonText={"save"} />

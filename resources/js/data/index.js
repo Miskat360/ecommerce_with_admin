@@ -25,7 +25,7 @@ export const sidebarLinks = [
         label: "dashboard",
     },
     { icon: RiListView, route: "admin.orders", label: "orders" },
-    { icon: RiPriceTag3Line, route: "admin.products", label: "products" },
+    { icon: RiPriceTag3Line, route: "products.index", label: "products" },
     { icon: RiUser3Line, route: "admin.customers", label: "customers" },
     { icon: RiFolderImageLine, route: "admin.content", label: "content" }, //RiGalleryLine
     { icon: RiLineChartLine, route: "admin.analytics", label: "analytics" },
@@ -43,7 +43,7 @@ export const bottombarLinks = [
         label: "dashboard",
     },
     { icon: RiListView, route: "admin.orders", label: "orders" },
-    { icon: RiPriceTag3Line, route: "admin.products", label: "products" },
+    { icon: RiPriceTag3Line, route: "products.index", label: "products" },
     { icon: RiUser3Line, route: "admin.customers", label: "customers" },
     {
         icon: RiNotification2Line,

@@ -116,10 +116,12 @@ const Topbar = ({}) => {
                         onClick={() =>
                             setIsNotificationBarOpen((prev) => !prev)
                         }
-                        className="max-md:hidden size-10 flex items-center justify-center bg-secondary-50 text-secondary rounded-md cursor-pointer"
+                        className="max-md:hidden size-10 flex items-center justify-center bg-secondary-50 text-secondary rounded-md cursor-pointer relative"
                     >
                         {/* <RiNotification2Line /> */}
                         <BellIcon />
+                        <span className="absolute -top-1 -right-1 inline-fle rounded-full size-3 bg-blue-600"></span>
+                        <span className="animate-ping absolute -top-1 -right-1 inline-flex size-3 rounded-full bg-blue-500 opacity-75"></span>
                     </div>
                     <details className="dropdown">
                         <summary className="flex items-center h-10 cursor-pointer select-none group">

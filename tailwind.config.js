@@ -51,7 +51,7 @@ export default {
                 //     400: "#E4CDD0",
                 // },
                 secondary: {
-                    DEFAULT: "#2F4CDD",
+                    DEFAULT: "#2563EB",
                     50: "#E9EDFC",
                     100: "#d2daf7",
                     // 200: "#A3D9CE",
